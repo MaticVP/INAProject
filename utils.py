@@ -109,7 +109,6 @@ def plot_community_sizes_over_time(community_snapshots, path="community_size_ove
             all_communities[comm.community_id]['times'].append(t)
             all_communities[comm.community_id]['sizes'].append(comm.size(-1))
 
-    # Plot each community as a line
     cmap = plt.get_cmap("tab20")
     num_communities = len(all_communities)
     colors = [cmap(i / num_communities) for i in range(num_communities)]
@@ -157,7 +156,6 @@ def plot_community_timeline(df, save_path="community_timeline.png"):
     palette = sns.color_palette("hls", len(communities))
     color_map = {comm: palette[i] for i, comm in enumerate(sorted(communities))}
 
-    # Plot
     plt.figure(figsize=(12, max(6, len(node_to_y) * 0.25)))
     for _, row in df.iterrows():
         plt.plot(row["time"], row["y"], 'o', color=color_map[row["community"]], markersize=5)
@@ -167,7 +165,6 @@ def plot_community_timeline(df, save_path="community_timeline.png"):
     plt.ylabel("Node")
     plt.title("Node Community Membership Over Time")
 
-    # Add legend
     handles = [plt.Line2D([0], [0], marker='o', color='w', label=f"Community {comm}",
                           markerfacecolor=color_map[comm], markersize=6)
                for comm in sorted(communities)]
@@ -284,7 +281,6 @@ def create_sankey(df, filename="community_evolution_sankey.html"):
 
     fig.update_layout(title_text="Community Evolution Sankey Diagram", font_size=10)
 
-    # Save to file
     if filename.endswith(".html"):
         fig.write_html(filename)
     else:
