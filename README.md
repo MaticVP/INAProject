@@ -1,2 +1,2 @@
 # INAProject
-Instruction to network analysis project. Temporal networks handout
+Introduction to network analysis course project. Temporal networks handout
