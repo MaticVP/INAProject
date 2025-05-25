@@ -7,8 +7,8 @@ def main():
                                            ,"./Data/tij_LyonSchool.dat")
 
     G_dyn = DynGraph()
-    start_from_sample_t = 10
-    end_at_sample_t = 20
+    start_from_sample_t = 1
+    end_at_sample_t = 5
 
     for row in edges.itertuples(index=False):
         t, u, v = row

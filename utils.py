@@ -77,7 +77,8 @@ def detect_communities(G, algorithm, threshold_same = 0.75):
                     for prev in matches:
                         prev.split_into.add(curr)
                         curr.merged_from.add(prev)
-                        existing_communities.remove(prev)
+                        if prev in existing_communities:
+                            existing_communities.remove(prev)
                     communities_to_be_added.append(curr)
                 else:
                     communities_to_be_added.append(curr)
@@ -87,7 +88,9 @@ def detect_communities(G, algorithm, threshold_same = 0.75):
                     for curr in matches:
                         prev.split_into.add(curr)
                         curr.merged_from.add(prev)
-                    existing_communities.remove(prev)
+
+                    if prev in existing_communities:
+                        existing_communities.remove(prev)
 
             for comm in communities_to_be_added:
                 existing_communities.append(comm)
@@ -234,7 +237,7 @@ def plot_snapshots(dyn_graph, df, layout="spring", output_folder="snapshots"):
 
     print(f"Saved {len(times)} labeled snapshots to '{output_folder}/'")
 
-def create_sankey(df, filename="community_evolution_sankey.html"):
+def create_sankey(df, filename="community_evolution_sankey.png"):
     import plotly.graph_objects as go
 
     timestamps = sorted(df["time"].unique())
