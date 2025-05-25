@@ -237,7 +237,7 @@ def plot_snapshots(dyn_graph, df, layout="spring", output_folder="snapshots"):
 
     print(f"Saved {len(times)} labeled snapshots to '{output_folder}/'")
 
-def create_sankey(df, filename="community_evolution_sankey.png"):
+def create_sankey(df, filename="community_evolution_sankey.html"):
     import plotly.graph_objects as go
 
     timestamps = sorted(df["time"].unique())
